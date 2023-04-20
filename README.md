@@ -17,9 +17,6 @@ a detailed report on our Autonomous Food Delivery System.
    export TURTLEBOT3_MODEL=burger
    alias rteleop='ros2 run turtlebot3_teleop teleop_keyboard'
    alias rslam='ros2 launch turtlebot3_cartographer cartographer.launch.py’
-   alias map2base='ros2 run auto_nav map2base'
-   alias waypoints='ros2 run auto_nav wayPoints'
-   alias start_nav='ros2 run auto_nav moveToGoal'
    ```
 3. Add the following lines to .bashrc of the RPi in the Turtlebot3
     ```
@@ -34,8 +31,24 @@ a detailed report on our Autonomous Food Delivery System.
       ```
 
 ## Installing the program on the Remote PC
-1. Copy the colcon workspace from the cloned repository files, into the Home directory. Then
+- Copy the colcon workspace from the cloned repository files, into the Home directory. Then
 build the workspace to setup the ros navigation package on your Remote PC
     ```
     cp ~/Autonomous-Food-Delivery-System_EG2310/colcon_ws ~/
+    colcon build
+    ```
+- Add the following lines to the .bashrc file on the laptop
+   ```
+   alias map2base='ros2 run auto_nav map2base'
+   alias waypoints='ros2 run auto_nav wayPoints'
+   alias start_nav='ros2 run auto_nav moveToGoal'
+   ```
+## Installing the program on the Turtlebot3's RPi
+ - Copy the `hardware_startup` package from the cloned repository files, into the turtlebot3_ws in the RPi.
+ After this, build the workspace.
+    ```
+    scp -r ~/Autonomous-Food-Delivery-System_EG2310/hardware_startup ubuntu@<ip-address-of-RPi>:~/turtlebot3_ws/src
+    ssh ubuntu@<ip-address-of-RPi>
+    cd turtlebot3_ws
+    colcon build
     ```
