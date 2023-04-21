@@ -1,7 +1,3 @@
-/*********
-  Rui Santos
-  Complete project details at https://randomnerdtutorials.com  
-*********/
 #include "Keypad.h"
 #include "Arduino.h"
 #include <WiFi.h>
@@ -14,12 +10,15 @@
 #include <ESP32Servo.h>
 #include <iostream>
 #include <deque>
+// INITIALIZATION START
+
 // Replace the next variables with your SSID/Password combination
 const char* ssid = "OPPOA96";
 const char* password = "12345678";
 
 // Add your MQTT Broker IP address, example:
 const char* mqtt_server = "192.168.237.200";
+// INITIALIZATION END
 
 #define SERVO_PIN 13 // ESP32 pin GIOP13 connected to servo motor
 
@@ -30,9 +29,9 @@ PubSubClient client(espClient);
 char msg[50];
 int value = 0;
 int pos = 0; 
-bool dock_flag = true;
+bool dock_flag = true; // Boolean value to determine whether the Delivery bot is docked or not
 const char* device_name = "ESP32";
-std::deque<int> table_number_queue;
+std::deque<int> table_number_queue; // Queue to store confirmed table numbers
 int table_number;
 /* Setting up the keypad */
 const byte ROWS = 4; //four rows
@@ -169,12 +168,10 @@ void callback(char* topic, byte* message, unsigned int length) {
   if (String(topic) == "esp32/input") {
     Serial.println("Changing dock_flag to ");
     if(messageTemp == "1"){
-      //client.publish("esp32/input", "DOCKED");
       Serial.println("True");
       dock_flag = true;
     }
     else if(messageTemp == "0"){
-      //client.publish("esp32/input", "NOT_DOCKED");
       Serial.println("False");
       dock_flag = false;
     }
@@ -198,10 +195,10 @@ void open_servo(){
 
 void loop() {
   client.loop();
-  char key = keypad.getKey();
+  char key = keypad.getKey(); // Get the value of the key pressed on the keypad
 
   if (!client.connected()) {
-    reconnect();
+    reconnect(); // If MQTT connection lost, attempt to reconnect
   }
   if (wlc_flag){
     display_message("Press 1-6 for table number");
@@ -215,8 +212,8 @@ void loop() {
     display_message("Publishing number from queue");
     open_servo();
     char msg[50]; 
-    snprintf(msg, 50, "%d",table_number_queue[0]) ;
-    client.publish("esp32/output", msg);
+    snprintf(msg, 50, "%d",table_number_queue[0]);
+    client.publish("esp32/output", msg); //Publish the table number to the Delivery bot
     table_number_queue.pop_front();
     table_number = 0;
     
