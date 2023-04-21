@@ -34,7 +34,7 @@ our custom Delivery bot and Dispenser bot. Refer to _Hardware-Design-Document.pd
     sudo systemctl start mosquitto
     ```
 -  Follow the instructions here to download and setup the MQTT library onto the Dispenser bot
-   https://github.com/knolleary/pubsubclient/archive/master.zip](https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/)
+   https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
    
 6. Clone this repository into the Remote PC's Home directory
     ```
@@ -64,9 +64,9 @@ build the workspace to setup the ros navigation package on your Remote PC
     colcon build
     ```
 ## Installing the program on the Dispenser bot's ESP32
-- Download the `esp32code_v3.4` package from the cloned repository files, into your Remote PC
+- Navigate to `esp32code_v3.4` folder within the cloned repository files
 - Open `esp32code_v3.4.ino` with Arudino IDE 2.0.3
-- Follow the `INITIALIZATION` steps
+- Follow the `INITIALIZATION` steps within
 - Connect the ESP32 to the Remote PC with a Micro USB cable
 - Flash the code onto the ESP32 whilst simultaneously pressing the `BOOT` button on the ESP32   
 ## Setting up Waypoints for the tables
