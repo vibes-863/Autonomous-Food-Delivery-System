@@ -185,3 +185,4 @@ table_range =range(-IDEAL_ANGLE,IDEAL_ANGLE+1,1)
 ```
 ## Other information
 - The navigation code (_auto_nav_ package) was initially developed in another repository : https://github.com/Hidiebye11/r2auto_nav.git
+- Detailed explanation on the objectives of this system as well as the design of our restaurant can be refered to in the file _final_mission_rubrics.pdf_
