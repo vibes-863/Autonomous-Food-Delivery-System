@@ -54,4 +54,14 @@ build the workspace to setup the ros navigation package on your Remote PC
     ```
 ## Installing the program on the Dispenser bot's ESP32
 - INCLUDE STEPS TO DO THE SAME
-## 
+## Setting up Waypoints for the tables
+Now that we are done setting up the softwares for the Delivery bot and Dispenser bot, we can setup the waypoints for the Delivery bot.
+
+**Note**:
+- The waypoints currently set are for our particular restaurant layout (refer _restaurant_layout.png_). You will have to **reset the waypoints** before you begin autonomous navigation
+- In order to **reuse the waypoints**, the Delivery bot must be turned on from the **same poition** with the same **orientation** all the time. We did this by first fixing the position of the Docking Line (_docking_line.docx_) in the restaurant, which is where you would want your Dispenser Bot to be. Then we placed our Delivery bot on this line before turning it on. In order to make sure we start on the same poisition, we also marked reference points on the Docking Line based on the postion of the Delivery bot.
+- An alternative to the above would be to setup the waypoints each time you Restart the Food Delivery System, however, we do not recommmend this.
+
+### Preparation - waypoints
+1. Begin by first printing out the Docking Line (_docking_line.docx_) and then joining them together, using tape (DO NOT use dark coloured tape). While joining them together, ensure that the black line is continuous and that there are no white gaps in between. Furthermore, do not use any type of plastic tape on the front as it would cause the Delivery bot's ball castors to slip, resulting in inaccurate docking.  If needed, use white masking tape.
+Refer to _example_dockingLine.png_ for an idea on how the end result should look like.
