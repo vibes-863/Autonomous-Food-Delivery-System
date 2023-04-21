@@ -154,5 +154,32 @@ With that, you have successfully initialized the Autonomous Food Delivey System!
 ### Steps to deliver a soda can to a Table
 @hassan INCLUDE THE STEPS TO DO AT THE DISPENSER INTERFACE
 
-That's it! You have not successfully setup and run a state of the art Autonomous Food Delivery System
+That's it! You have now successfully setup and run a state of the art Autonomous Food Delivery System
    
+## Parameters that affect the operation of the Delivery bot
+From lines 16 to 36 of /colcon_ws/src/auto_nav/auto_nav/moveToGoal.py
+
+The explanation of all the parameters are as commented below. These are the values which we found work the best for us in our use case. Please change these values if you require a different behavior of the robot
+``` python
+# constants
+ROTATE_CHANGE = 0.5 # Defines the Rotation speed. Is changed and then reset for some cases
+SPEED_CHANGE = 0.15 # Defines the Speed.
+ANGLE_ERROR = 5.0 # Defines the acceptable error in angle while rotating
+DIST_ERROR = 0.04 # Defines the acceptable error in distance while moving to a point
+ANGLE_CHECK_DISTANCE = 0.2 # Defines the distance after which the angle is checked to see if the robot deviated from its path. Is changed and then rest for some cases
+SPEED_REDUCTION_DISTANCE = 0.25 # Defines the distance after which the speed is reduced to avoid overshooting
+REDUCED_SPEED_CHANGE = 0.05 # Defines the reduced speed
+ROTATION_REDUCTION_ANGLE = 20.0 # Defines the angle after which the rotation speed is reduced to avoid overshooting. Is changed and then reset for some cases
+IDEAL_ANGLE = 25 # Defines the angle from 0 to which the unknown table is searched for
+# defining the individual table's 'waypoints' based on the wayPointsData.json file
+table1 = [1,2] 
+table2 = [1,2,3]
+table3 = [1,10,4]
+table4 = [1,10,5]
+table5 = [1,10,6,7]
+table6 = [1,2,3,8,9,11]
+# initializing table_num to -1
+table_num = -1 # table number. Note set to -1 so that it acts as a flag
+# defining the table range for searching for the unknown table
+table_range =range(-IDEAL_ANGLE,IDEAL_ANGLE+1,1)
+```
