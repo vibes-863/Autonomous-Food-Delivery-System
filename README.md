@@ -28,7 +28,7 @@ a detailed report on our Autonomous Food Delivery System.
     alias switch_pub='ros2 run hardware_startup switch_pub'
     ```
 4. Setup MQTT for communication between the **Remote PC** and the Dispenser bot (ESP32)
-- Copy the following commands onto the Linux terminal to install the **MQTT broker** onto the **Remote PC** 
+- Copy the following commands onto the Linux terminal to install the MQTT broker onto the Remote PC
     ```
     sudo apt update -y
     sudo apt install mosquitto mosquitto-clients -y
@@ -65,14 +65,18 @@ build the workspace to setup the ros navigation package on your Remote PC
     colcon build
     ```
 ## Installing the program on the Dispenser bot's ESP32
-- INCLUDE STEPS TO DO THE SAME @hassan
+- Download the `esp32code_v3.4` package from the cloned repository files, into your Remote PC
+- Open `esp32code_v3.4.ino` with Arudino IDE 2.0.3
+- Follow the `INITIALIZATION` steps
+- Connect the ESP32 to the Remote PC with a Micro USB cable
+- Flash the code onto the ESP32 whilst simultaneously pressing the `BOOT` button on the ESP32   
 ## Setting up Waypoints for the tables
 Now that we are done setting up the softwares for the Delivery bot and Dispenser bot, we can setup the waypoints for the Delivery bot.
 
 **Note**:
 - The waypoints currently set are for our particular restaurant layout (refer _restaurant_layout.png_). You will have to **reset the waypoints** before you begin autonomous navigation
 - In order to **reuse the waypoints**, the Delivery bot must be turned on from the **same poition** with the same **orientation** all the time. We did this by first fixing the position of the Docking Line (_docking_line.docx_) in the restaurant, which is where you would want your Dispenser Bot to be. Then we placed our Delivery bot on this line before turning it on. In order to make sure we start on the same poisition, we also marked reference points on the Docking Line based on the postion of the Delivery bot.
-- An alternative to the above would be to setup the waypoints each time you Restart the Food Delivery System, however, we do not recommmend this.
+- An alternative to the above would be to setup the waypoints each time you restart the Food Delivery System, however, we do not recommmend this.
 - For our System, we set waypoint 1 as the **Docking Point**. The **Docking Point** is the waypoint at which the Delivery bot begins the **Docking** procedure. Ensure that the **Docking Point** is close enough to **Docking Line** such that if the Delivery bot rotates in poisition at that point, the **Docking Line** will be detected by the **Infrared Sensors**.
 
 ### Preparation - waypoints
@@ -85,7 +89,7 @@ Refer to _example_dockingLine.png_ for an idea on how the end result should look
 After completing the preparation, we can begin setting the waypoints. Note that the preparation is a one time thing. If you want to adjust the waypoints later, you only need to follow the following steps.
 
 1. If the Delivery bot is not turned on yet, place the bot on the **Initial position** and then turn it on.
-2. On the **Remote PC**, open **4 Terminals** (we recommend installing and using Terminator as it is much more convinent when working with multiple terminals)
+2. On the **Remote PC**, open **4 Terminals** (we recommend installing and using **Terminator** as it is much more convinent when working with multiple terminals)
 3. In **Terminal 1**
    ```
    ssh ubuntu@<ip-address-of-RPi>
@@ -118,14 +122,14 @@ After completing the preparation, we can begin setting the waypoints. Note that 
       - You can now move onto the next section's (**Let's Start Delivering!**) **Initializing** sub-section.
    - Stop for now - If you choose to stop for time being and then continue later then you can do the following:
       -  Stop all running code by entering `Ctrl + c` on all Terminals
-      -  Later when you want to being **Autonomous Navigation**, you can begin by following the steps from the next section (**Let's Start Delivering!**)
+      -  Next, when you want to start **Autonomous Navigation**, you can begin by following the steps from the next section (**Let's Start Delivering!**)
 
 ## Let's Start Delivering!
-Now that we are done with all the preparation, we can begin delivering soda cans. But before, you start there is a little initialization you need to do.
+Now that we are done with all the preparation, we can begin delivering soda cans. However before starting, there is a little initialization you need to do.
 ### Initializing
 Follow these steps to get all the software required by the Autonomous Food Delivery System to start:
 1. Place the Delivery bot on the **Initial Position** and then turn it on
-2. Open **6 Terminals** on the **Remote PC**. Three of these will be used to start up the hardware on the Delivery bot, and the other three will be used to bein the navigation softwares.
+2. Open **6 Terminals** on the **Remote PC**. Three of these will be used to start up the hardware on the Delivery bot, and the other three will be used to begin the navigation softwares.
 3. In **Terminal 1**
    ```
    ssh ubuntu@<ip-address-of-RPi>
@@ -160,7 +164,9 @@ Follow these steps to get all the software required by the Autonomous Food Deliv
    
 With that, you have successfully initialized the Autonomous Food Delivey System!
 ### Steps to deliver a soda can to a Table
-@hassan INCLUDE THE STEPS TO DO AT THE DISPENSER INTERFACE
+1. Select a destination table by pressing a number 1-6 on the keypad
+2. Press '#' to confirm the table number and the Delivery robot will start delivering to said table if docked. Else, the number is added to queue
+3. Press "*" to delete selected table number
 
 That's it! You have now successfully setup and run a state of the art Autonomous Food Delivery System
    
