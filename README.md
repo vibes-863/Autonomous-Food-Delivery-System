@@ -34,6 +34,9 @@ a detailed report on our Autonomous Food Delivery System.
     sudo apt install mosquitto mosquitto-clients -y
     sudo systemctl start mosquitto
     ```
+-  Follow the instructions here to download and setup the MQTT library onto the Dispenser bot
+   https://github.com/knolleary/pubsubclient/archive/master.zip](https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/)
+   
 6. Clone this repository into the Remote PC's Home directory
     ```
     git clone https://github.com/vibes-863/Autonomous-Food-Delivery-System_EG2310.git
