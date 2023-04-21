@@ -6,7 +6,7 @@ as of now, can deliver to a maximum of 6 different tables. However, the code has
 additional tables is easy. The current navigation system is based on stored waypoints.
 
 Please follow our step by step guide to setup and use our system. This setup guide assumes that you are using
-our custom Delivery bot and Dispenser bot. Refer to Hardware-Design-Document.pdf for a detailed report on our Autonomous Food Delivery System.
+our custom Delivery bot and Dispenser bot. Refer to _Hardware-Design-Document.pdf_ for a detailed report on our Autonomous Food Delivery System.
 
 **Note**: This system requires the Delivery bot's RPi, the Dispenser Bot's ESP32, and the Remote PC to be connected to the same network.
 
