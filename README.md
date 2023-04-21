@@ -183,3 +183,5 @@ table_num = -1 # table number. Note set to -1 so that it acts as a flag
 # defining the table range for searching for the unknown table
 table_range =range(-IDEAL_ANGLE,IDEAL_ANGLE+1,1)
 ```
+## Other information
+- The navigation code (_auto_nav_ package) was initially developed in another repository : https://github.com/Hidiebye11/r2auto_nav.git
