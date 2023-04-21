@@ -28,7 +28,12 @@ a detailed report on our Autonomous Food Delivery System.
     alias switch_pub='ros2 run hardware_startup switch_pub'
     ```
 4. Setup MQTT for communication between the **Remote PC** and the Dispenser bot (ESP32)
-   - INCLUDE STEPS TO DO THE SAME @hassan
+    ```
+    sudo apt update -y
+    sudo apt install mosquitto mosquitto-clients -y
+    sudo systemctl start mosquitto
+    alias switch_pub='ros2 run hardware_startup switch_pub'
+    ```
 6. Clone this repository into the Remote PC's Home directory
     ```
     git clone https://github.com/vibes-863/Autonomous-Food-Delivery-System_EG2310.git
